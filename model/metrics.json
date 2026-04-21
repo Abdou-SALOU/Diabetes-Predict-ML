@@ -1,0 +1,81 @@
+{
+  "best_model": "Gradient Boosted Trees",
+  "best_metrics": {
+    "accuracy": 0.8645,
+    "auc_roc": 0.8292,
+    "f1_score": 0.8265,
+    "training_time_sec": 101.0
+  },
+  "all_models": {
+    "Logistic Regression": {
+      "accuracy": 0.8628,
+      "auc_roc": 0.8244,
+      "f1_score": 0.8282,
+      "training_time_sec": 47.2
+    },
+    "Random Forest": {
+      "accuracy": 0.8595,
+      "auc_roc": 0.7888,
+      "f1_score": 0.7945,
+      "training_time_sec": 17.5
+    },
+    "Gradient Boosted Trees": {
+      "accuracy": 0.8645,
+      "auc_roc": 0.8292,
+      "f1_score": 0.8265,
+      "training_time_sec": 101.0
+    }
+  },
+  "feature_importances": {
+    "HighBP": 0.195052,
+    "GenHlth": 0.194306,
+    "BMI": 0.151641,
+    "Age": 0.121785,
+    "HighChol": 0.086664,
+    "HeartDiseaseorAttack": 0.073231,
+    "DiffWalk": 0.043436,
+    "HvyAlcoholConsump": 0.037045,
+    "Income": 0.028251,
+    "Sex": 0.024113,
+    "CholCheck": 0.020795,
+    "Education": 0.005112,
+    "Stroke": 0.005032,
+    "PhysHlth": 0.003961,
+    "MentHlth": 0.002939,
+    "Smoker": 0.002136,
+    "NoDocbcCost": 0.001741,
+    "PhysActivity": 0.001203,
+    "Veggies": 0.000831,
+    "Fruits": 0.000512,
+    "AnyHealthcare": 0.000214
+  },
+  "feature_columns": [
+    "HighBP",
+    "HighChol",
+    "CholCheck",
+    "BMI",
+    "Smoker",
+    "Stroke",
+    "HeartDiseaseorAttack",
+    "PhysActivity",
+    "Fruits",
+    "Veggies",
+    "HvyAlcoholConsump",
+    "AnyHealthcare",
+    "NoDocbcCost",
+    "GenHlth",
+    "MentHlth",
+    "PhysHlth",
+    "DiffWalk",
+    "Sex",
+    "Age",
+    "Education",
+    "Income"
+  ],
+  "dataset_info": {
+    "total_rows": 253680,
+    "total_features": 21,
+    "train_rows": 203181,
+    "test_rows": 50499
+  }
+}

@@ -1,0 +1,29 @@
+services:
+  # Service d'entraînement Spark ML — exécuté une seule fois au démarrage
+  spark-trainer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: diabetes-predict-base
+    volumes:
+      - ./data:/app/data
+      - ./model:/app/model
+      - ./spark_ml:/app/spark_ml
+    command: python /app/spark_ml/train.py
+
+  # Service Streamlit — interface web de prédiction
+  streamlit-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: diabetes-predict-base
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./data:/app/data
+      - ./model:/app/model
+      - ./streamlit_app:/app/streamlit_app
+      - ./spark_ml:/app/spark_ml
+    command: streamlit run /app/streamlit_app/app.py --server.port=8501 --server.address=0.0.0.0
+    depends_on:
+      - spark-trainer
