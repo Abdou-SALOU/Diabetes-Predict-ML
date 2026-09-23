@@ -150,8 +150,8 @@ The processing pipeline consists of 3 stages:
 
 | Model | Description | Hyperparameters |
 |--------|-------------|-----------------|
-| Logistic Regression | 86.28% | 82.44% | 82.82% |
-| Random Forest | 85.95% | 78.88% | 79.45% |
+| **Logistic Regression** | Linear classification model | `maxIter=100`, `regParam=[0.01, 0.1]`, `elasticNet=[0.0, 0.5]` |
+| **Random Forest** | Ensemble of 100 decision trees | `numTrees=100`, `maxDepth=[5, 10]`, `minInstances=[1, 5]` |
 | **GBT Classifier** | Gradient Boosted Trees | `maxIter=50`, `maxDepth=[5, 8]`, `stepSize=[0.1, 0.2]` |
 
 Each model is optimized via **CrossValidator** with **5 folds**, targeting **AUC-ROC** maximization.
@@ -162,18 +162,11 @@ Each model is optimized via **CrossValidator** with **5 folds**, targeting **AUC
 
 | Model | Accuracy | AUC-ROC | F1-Score |
 |--------|----------|---------|----------|
-| Logistic Regression | 86.3% | 82.4% | 82.8% |
-| Random Forest | 86.0% | 78.9% | 79.5% |
-| **Gradient Boosted Trees** | 86.45% | 82.92% | 82.65% |
+| Logistic Regression | 86.28% | 82.44% | 82.82% |
+| Random Forest | 85.95% | 78.88% | 79.45% |
+| **GBT Classifier** | 86.45% | 82.92% | 82.65% |
 
 > Source: `model/metrics.json`. The classes are imbalanced, so AUC-ROC, not accuracy, is the model-selection metric.
-
---------|----------|---------|----------|
-| Logistic Regression | ~74% | ~82% | ~74% |
-| Random Forest | ~75% | ~83% | ~74% |
-| **GBT Classifier** | **~76%** | **~83%** | **~75%** |
-
-> ⚠️ Results may vary slightly depending on the data split.
 
 ---
 
