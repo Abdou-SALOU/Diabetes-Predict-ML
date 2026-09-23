@@ -1,5 +1,11 @@
 # 🩺 DiabetesPredict — Diabetes Risk Prediction Tool
 
+> **In short:** a reproducible Spark ML pipeline that predicts type 2 diabetes risk from 21 health indicators (253,680 CDC records), compares 3 models with 5-fold cross-validation and serves the selected model in a Dockerized Streamlit app.
+>
+> **Result:** Gradient Boosted Trees selected, **AUC-ROC 82.9%**, accuracy 86.45%, F1 82.65% on 50,499 test rows · **Stack:** PySpark, Spark ML, Streamlit, Docker · **Portfolio:** [abdou-salou.github.io](https://abdou-salou.github.io/en)
+
+![DiabetesPredict test-set results: AUC-ROC by model and most influential features](docs/diabetes-results.png)
+
 > **Big Data Project** — 2nd Year Engineering Student  
 > Module: *Advanced Applications and Big Data Visualization*
 
@@ -144,18 +150,25 @@ The processing pipeline consists of 3 stages:
 
 | Model | Description | Hyperparameters |
 |--------|-------------|-----------------|
-| **Logistic Regression** | Linear classification model | `maxIter=100`, `regParam=[0.01, 0.1]`, `elasticNet=[0.0, 0.5]` |
-| **Random Forest** | Ensemble of 100 decision trees | `numTrees=100`, `maxDepth=[5, 10]`, `minInstances=[1, 5]` |
+| Logistic Regression | 86.28% | 82.44% | 82.82% |
+| Random Forest | 85.95% | 78.88% | 79.45% |
 | **GBT Classifier** | Gradient Boosted Trees | `maxIter=50`, `maxDepth=[5, 8]`, `stepSize=[0.1, 0.2]` |
 
 Each model is optimized via **CrossValidator** with **5 folds**, targeting **AUC-ROC** maximization.
 
 ---
 
-## 📊 Expected Results
+## 📊 Results (test set, 50,499 rows)
 
 | Model | Accuracy | AUC-ROC | F1-Score |
 |--------|----------|---------|----------|
+| Logistic Regression | 86.3% | 82.4% | 82.8% |
+| Random Forest | 86.0% | 78.9% | 79.5% |
+| **Gradient Boosted Trees** | 86.45% | 82.92% | 82.65% |
+
+> Source: `model/metrics.json`. The classes are imbalanced, so AUC-ROC, not accuracy, is the model-selection metric.
+
+--------|----------|---------|----------|
 | Logistic Regression | ~74% | ~82% | ~74% |
 | Random Forest | ~75% | ~83% | ~74% |
 | **GBT Classifier** | **~76%** | **~83%** | **~75%** |
